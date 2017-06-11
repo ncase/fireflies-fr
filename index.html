@@ -1,0 +1,405 @@
+<!doctype>
+<html>
+
+<head>
+
+	<!-- TRANSLATE: 'title' -->
+	<title>Lucioles</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=640">
+	<link rel="icon" type="image/png" href="favicon.png">
+
+	<!-- TRANSLATE: 'name' and 'description' -->
+	<meta itemprop="name" content="Lucioles">
+	<meta itemprop="description" content="une petite simulation de petites lucioles">
+	<meta itemprop="image" content="http://ncase.me/fireflies/social/thumbnail.png">
+
+	<!-- TRANSLATE: 'twitter:title' and 'twitter:description' -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@ncasenmare">
+	<meta name="twitter:title" content="Lucioles">
+	<meta name="twitter:description" content="une petite simulation de petites lucioles">
+	<meta name="twitter:creator" content="@ncasenmare">
+	<meta name="twitter:image" content="http://ncase.me/fireflies/social/thumbnail.png">
+
+	<!-- TRANSLATE: 'og:title' and 'og:description' -->
+	<meta property="og:title" content="Lucioles">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://ncase.me/fireflies/">
+	<meta property="og:image" content="http://ncase.me/fireflies/social/thumbnail.png">
+	<meta property="og:description" content="une petite simulation de petites lucioles">
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/widgets.css">
+
+</head>
+<body>
+
+<!-- The firefly simulation -->
+<div id="game"></div>
+
+<!-- The WORDS! -->
+<div id="words">
+<h1>“Lucioles”</h1>
+
+<span id="credits" style="font-size:15.5px">
+translated by <a href="https://github.com/Obigre" target="_blank">Colin Landreau</a> |
+original <a href="http://ncase.me/fireflies/">in English</a></span>
+
+
+<p>
+Comme les lumières un soir de Noël, les lucioles qui flottent doucement
+au dessus du sol donnent à la forêt un petit quelque chose de magique.
+</p>
+
+<div style="overflow:hidden;">
+	<img src="ui/chaos.png" width="150" style="float: left;"/>
+	<div style="width: 185px; float: right;">
+		<span style="font-size:1.6em; line-height:1.1em;">CLIQUEZ &amp; MAINTENEZ</span>
+		<br>
+		pour semer le chaos
+		<br>
+		parmi les lucioles &rarr;
+	</div>
+</div>
+
+<p>
+Mais certaines espèces de lucioles sont <em>encore plus magiques</em> que les autres.
+En Asie du Sud, si vous parcourez les berges d'une rivière en pleine nuit,
+vous assisterez à ce stupéfiant balais lumineux – l'oeuvre des lucioles Thaïlandaises:
+</p>
+
+<iframe width="350" height="197" src="https://www.youtube-nocookie.com/embed/ZGvtnE1Wy6U?rel=0&amp;start=64" frameborder="0" allowfullscreen></iframe>
+
+<p>
+Toute une forêt de mangrove, s'allumant à l'unisson,
+replongeant dans les ténèbres, puis s'allumant à nouveau – en une synchronie quasi-parfaite.
+Comment des centaines de lucioles peuvent-elles se coordoner ?
+Qui mène cette symphonie silencieuse ?
+</p>
+
+<p>
+Le mystère demeura près d'un siècle sans explication, lorsqu'en 1992,
+une équipe de scientifiques américains se mis en quête d'une réponse.
+Malheureusement, et sans surprise, la presse se moqua d'eux –
+<em>“Le Gouvernement Gaspille Vos Taxes Pour Etudier Des Lucioles à Bornéo:
+Encore Une Brillante Idée !”</em> titrait un tabloïde.
+Calculatrices et caméras à la main, les scientifiques, imperturbables, persévérèrent.
+</p>
+
+<p>
+Or donc, <em>comment</em> ces lucioles choisissent-elles un meneur,
+un maestro qui saura les mener en rythme ?
+Pour les scientifiques, la réponse fut simple :
+</p>
+
+<p>
+Elles ne le font pas.
+</p>
+
+<p>
+Chaque luciole possède <em>sa propre</em> horloge interne,
+et chaque fois que cette horloge sonne "midi", la luciole s'allume.
+</p>
+
+<p>
+<img src="ui/clock.png" width="350"/>
+</p>
+
+<p>
+Et au lieu de synchroniser son horloge à un meneur central,
+chaque luciole procède par ces qulques étapes:
+</p>
+
+<p>
+Etape 1: quand je vois une luciole s'allumer à proximité,
+j'avance d'un peu mon horloge interne.
+</p>
+
+<p>
+<img src="ui/nudge.png" width="350"/>
+</p>
+
+<p>
+Etape 2: c'est tout.
+</p>
+
+<p>
+Une si petite interaction, si localisée, peut-elle réellement pousser
+une forêt pleine de lucioles à s'éclairer de manière synchrone ?
+Il n'y a qu'une seule façon de le savoir...
+</p>
+
+<hr/>
+
+	<!-- TRANSLATE: 'label', 'label-on', and 'label-off' -->
+	<widget type="toggle"
+		id="neighborNudgeRule"
+		background="#000" color="#fff"
+		background-on="#FEE27F" color-on="#000"
+
+		label="Influencer les voisins:<br>(clic pour allumer&rarr;)"
+		label-on="OUI" label-off="NON">
+	</widget>
+
+<hr/>
+
+<p>
+Patientez. Et regardez attentivement.
+</p>
+
+<p>
+Qu'observez-vous?
+</p>
+
+<p>
+Au début, pas grand chose.
+Il semble que les lucioles clignotent encore séparément.
+</p>
+
+<p>
+Mais peu à peu, on distingue de petits essaims s'illuminer en rythme –
+mais ce sont des essaims indépendants qui ne clignotent toujours pas simultanément.
+</p>
+
+<p>
+Encore quelques instants, et vous verez les lucioles s'illuminer par "vagues",
+telles les mouvements de foule des fans, se soulevant de leurs tribunes lors d'un match de baseball.
+</p>
+
+<p>
+Enfin, toutes les lucioles brillent à l'unisson –
+et même les dernières récalcitrantes finissent par rejoindre la danse collective.
+</p>
+
+<p>
+Encore plus fou ? Si l'on dérange encore le mouvement de ces lucioles...
+</p>
+
+<div style="overflow:hidden;">
+	<img src="ui/chaos.png" width="150" style="float: left;"/>
+	<div style="width: 185px; float: right;">
+		<span style="font-size:1.6em; line-height:1.1em;">CLIQUES &amp; MAINTENEZ</span>
+		<br>
+		pour semer le chaos
+		<br>
+		parmi les lucioles (encore) &rarr;
+	</div>
+</div>
+
+<p>
+...oui, on les divisera pour un moment, mais doucement, sûrement,
+elles rejoindront le même mouvement, et scintilleront à nouveau toutes ensemble.
+</p>
+
+<p>
+Voilà quelques boutons &amp; quelques curseurs supplémentaires,
+qui vous permettront d'expérimenter avec ces lucioles virtuelles:
+</p>
+
+<hr/>
+
+	<!-- TRANSLATE: 'label', 'label-min', and 'label-max' -->
+	<widget type="slider"
+		id="numFireflies"
+		background="#FEE27F" color="#fff"
+		min=10 max=500 step=1
+
+		label="Nombre de lucioles :"
+		label-min="10" label-max="500">
+	</widget>
+
+	<!-- TRANSLATE: 'label', 'label-on', and 'label-off' -->
+	<widget type="toggle"
+		id="showClocks"
+		background="#000" color="#fff"
+		background-on="#FEE27F" color-on="#000"
+
+		label="Montrer les horloges :"
+		label-on="OUI" label-off="NON">
+	</widget>
+
+	<!-- TRANSLATE: 'label', 'label-min', and 'label-max' -->
+	<widget type="slider"
+		id="clockSpeed"
+		background="#FEE27F" color="#fff"
+		min="0.2" max="2" step="0.05"
+
+		label="Vitesse des horloges:"
+		label-min="lentes" label-max="rapides">
+	</widget>
+
+	<!-- TRANSLATE: 'label', 'label-on', and 'label-off' -->
+	<widget type="toggle"
+		id="neighborNudgeRule"
+		background="#000" color="#fff"
+		background-on="#FEE27F" color-on="#000"
+
+		label="Influencer les voisins:"
+		label-on="OUI" label-off="NON">
+	</widget>
+
+	<!-- TRANSLATE: 'label', 'label-min', and 'label-max' -->
+	<widget type="slider"
+		id="nudgeAmount"
+		background="#FEE27F" color="#fff"
+		min="0.01" max="0.10" step="0.001"
+
+		label="Décalage des horloges:"
+		label-min="petit" label-max="important">
+	</widget>
+
+	<!-- TRANSLATE: 'label', 'label-min', and 'label-max' -->
+	<widget type="slider"
+		id="neighborRadius"
+		background="#FEE27F" color="#fff"
+		min=50 max=500 step=10
+
+		label="Proximité des voisins nécessaire:"
+		label-min="proches" label-max="loins">
+	</widget>
+
+	<!-- TRANSLATE: 'label' -->
+	<widget type="button"
+		id="resetFireflies"
+		background="#000" color="#fff"
+		background-hover="#FEE27F" color-hover="#000"
+
+		label="réinitialiser les lucioles">
+	</widget>
+
+	<!-- TRANSLATE: 'label' -->
+	<widget type="button"
+		id="resetEverything"
+		background="#000" color="#fff"
+		background-hover="#FEE27F" color-hover="#000"
+
+		label="tout réinitialiser">
+	</widget>
+
+<hr/>
+
+<p>
+Et voilà le secret derrière la magie de nos lucioles:
+</p>
+
+<div style="overflow:hidden; text-align:center">
+<img src="ui/emergence.png" width="350" style="margin-bottom:25px"/>
+<div style="width:170px; float:left;">
+	<span style="font-size:27px">intéractions</span><br><span style="font-size:33px; line-height:10px">à petite échelle</span>
+</div>
+<div style="width:10px; float:left; position:relative; left:-5px; top:7px">&rarr;</div>
+<div style="width:170px; float:left;">
+	<span style="font-size:27px">organisation</span><br><span style="font-size:33px; line-height:10px">à grande échelle</span>
+</div>
+</div>
+
+<p>
+En fait, les lucioles ne sont pas les seules choses
+capables de synchronisation dynamique.
+Vos neurones produisent des ondes cérébrales.
+Les cellules de votre pacemaker s'allument simultanément.
+<a target="_blank" href="https://www.youtube.com/watch?v=5v5eBf2KwF8">
+Même une poignée d'innoncents métronomes installés sur une plateforme instable finiront par se balancer en rythme.</a>
+Ajoutons à cela que comprendre l'auto-synchronie nous a aidé à construire de meilleurs
+lasers, de meilleurs ordinateurs, et une meilleure technologie de communication !
+</p>
+
+<p>
+Et quand on pense que ces systèmes d'auto-synchronie furent en partie
+découverts par quelques scientifiques qui aimaient juste beaucoup les lucioles...
+Les tabloïdes avaient raison finalement: ce projet était une sacrée <em>“Brillante Idée”</em>.
+</p>
+
+<p>
+. . .
+</p>
+
+<p>
+Vous flottez au dessus du sol, en douceur, en silence,
+ponctuant parfois les ténèbres d'un point de lumière incandescente.
+Seul, votre éclat ne portera pas loin.
+</p>
+
+<p>
+Mais chaque fois que vous brillez, vous inspirez d'autres près de vous à briller également,
+plus tôt qu'ils ne l'auraient fait autrement.
+Et ceux proches de vous, à leur tour, inspirent ceux qui <em>leur</em> sont proches.
+</p>
+
+<p>
+Et ainsi de suite.
+</p>
+
+<p>
+Pour commencer, un groupe isolé se met à briller au même rythme.
+Puis, une vague de lumière balaie l'essaim tout entier.
+Enfin, vous éclatez ensemble de la même lumière,
+un unique signal étincelant, en fusion, en harmonie – en synchronie.
+</p>
+
+<p>
+Quelle intéraction à petite échelle provoqueras-tu aujourd'hui, petite luciole ?
+</p>
+
+<hr class="footer"/>
+
+<div id="credits">
+	<p>
+	Inspiré par le livre de Steven Strogatz,<br>
+	<a href="http://www.powells.com/book/sync-how-order-emerges-from-chaos-in-the-universe-nature-daily-life-9780786887217" target="_blank">
+	SYNC: How Order Emerges From Chaos In the Universe, Nature, and Daily Life
+	</a>
+	</p>
+
+	<p>
+	Créé par
+	<a href="http://ncase.me/" target="_blank">Nicky Case</a>,
+	avec l'amour &amp; le soutien de mes mécènes
+	<a href="credits" target="_blank">(retrouvez-les tous ici)</a>
+	</p>
+
+	<p>
+	"Lucioles (“Fireflies”) est un projet open source, dédié au domaine public.
+	<a href="https://github.com/ncase/fireflies" target="_blank">(choppez le code sur Github!)</a>
+	</p>
+
+	<p>
+	<a href="https://www.patreon.com/ncase" target="_blank">
+		<span id="patreon" >soutenez-moi sur Patreon &lt;3</span>
+	</a>
+	</p>
+
+	<p>&nbsp;</p>
+
+	<p>
+	
+	partagez avec votre essaim:<br>
+
+	<!-- TRANSLATE: 'text' -->
+	<sharing text="Les Lucioles, ce qu'elles peuvent nous apprendre sur, eh bien, tout. Une simulation intéractive:"
+			 link="http://ncase.me/fireflies-fr/"></sharing>
+
+	</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
+
+<!-- Library code -->
+<script src="js/pixi.min.js"></script>
+<script src="js/howler.js"></script>
+<script src="js/minpubsub.src.js"></script>
+<script src="js/helpers.js"></script>
+<script src="js/Mouse.js"></script>
+<script src="js/widgets.js"></script>
+<script src="js/sharing.js"></script>
+
+<!-- Main code -->
+<script src="js/index.js"></script>
